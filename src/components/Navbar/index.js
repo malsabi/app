@@ -1,10 +1,10 @@
 import React from 'react';
 import './style.css';
 
-function Navbar() {
+function NavbarComponent() {
   return (
     <div>Navbar</div>
   )
 }
 
-export default Navbar;
+export default NavbarComponent;

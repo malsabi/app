@@ -3,25 +3,23 @@ import './style.css';
 
 function ContactPage() {
   return (
-      <table style={{width:'100%'}}>
-        <tbody>
-          <tr>
-            <td>&bull;&emsp;Khulood Yousuf Al Nuaimi</td>
-            <td>H00418272@hct.ac.ae</td>
-            <td>02 - 2062345</td>
-          </tr>
-          <tr>
-            <td>&bull;&emsp;Maitha Hamad Al Suwaidi</td>
-            <td>H00417167@hct.ac.ae</td>
-            <td>02 - 2061567</td>
-          </tr>
-          <tr>
-            <td>&bull;&emsp;Amnah Abdulla Al Ameeri</td>
-            <td>H00417181@hct.ac.ae</td>
-            <td>02 - 2069876</td>
-          </tr>
-        </tbody>
-      </table>
+	<div className='w-100 d-flex flex-column justify-content-center '>
+		<div className='row d-flex justify-content-center'>
+			<div className='col-4 text-center'>&bull;&emsp;Khulood Yousuf Al Nuaimi</div>
+			<div className='col-4 text-center'>H00418272@hct.ac.ae</div>
+			<div className='col-4 text-center'>02 - 2062345</div>
+		</div>
+		<div className='row'>
+			<div className='col-4 text-center'>&bull;&emsp;Maitha Hamad Al Suwaidi</div>
+			<div className='col-4 text-center'>H00417167@hct.ac.ae</div>
+			<div className='col-4 text-center'>02 - 2061567</div>
+		</div>
+		<div className='row'>
+			<div className='col-4 text-center'>&bull;&emsp;Amnah Abdulla Al Ameeri</div>
+			<div className='col-4 text-center'>H00417181@hct.ac.ae</div>
+			<div className='col-4 text-center'>02 - 2069876</div>
+		</div>
+	</div>
   )
 }
 

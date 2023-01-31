@@ -12,11 +12,11 @@ function Button(props) {
     setHover(false);
   }
 
-  const style = {
+  var style = {
     backgroundColor: 'transparent',
-    color: 'black',
+    color: props.color ? props.color: 'black',
     fontSize: '16px',
-    fontWeight: 'normal',
+    fontWeight: props.fontWeight ? props.fontWeight : 'normal',
     padding: '1rem',
     margin: '0 1rem 0 1rem',
     marginTop: '0',
@@ -28,6 +28,8 @@ function Button(props) {
     borderBottom: hover ? 'solid 1px black' : 'none',
     textTransform: 'capitalize'
   }
+
+  style.borderBottom = props.submit ? 'solid 1px black': hover ? 'solid 1px black' : 'none';
   return (
     <button
       className='Button'

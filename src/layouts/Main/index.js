@@ -1,14 +1,19 @@
 import React from 'react';
 import Label from '../../components/Label';
-import ContactPage from '../../pages/ContactPage';
+// import ContactPage from '../../pages/ContactPage';
+// import PasswordSuggestionsPage from '../../pages/PasswordSuggestionsPage';
+// import UserRegisterPage from '../../pages/userRegisterPage';
+import TestPasswordPage from '../../pages/TestPasswordPage';
 import './style.css';
 
 function Main() {
   return (
     <main>
-      <Label text="Contact Us"></Label>
-      <ContactPage></ContactPage>
-      <div></div>
+      <Label text="Check Your Password Strength"></Label>
+      <TestPasswordPage></TestPasswordPage>
+      {/* <UserRegisterPage></UserRegisterPage> */}
+      {/* <PasswordSuggestionsPage></PasswordSuggestionsPage> */}
+      {/* <ContactPage></ContactPage> */}
     </main>
   )
 }
