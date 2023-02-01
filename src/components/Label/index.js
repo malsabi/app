@@ -3,7 +3,7 @@ import './style.css';
 
 function Label(props) {
   return (
-    <h1 className='text_title'>{props.text}</h1>
+    <h1 className='text_title' style={{fontWeight:'600'}}>{props.text}</h1>
   )
 }
 

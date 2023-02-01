@@ -1,6 +1,8 @@
 import React , {useState} from 'react';
 import './style.css';
 import Button from '../../components/Button';
+import Label from '../../components/Label';
+import { Link } from 'react-router-dom';
 
 function UserRegisterPage() {
 	const [inputs, setInputs] = useState({});
@@ -14,21 +16,30 @@ function UserRegisterPage() {
 		setInputs(values => ({...values, [name]: value}))
 	}
 
-	 const handleSubmit = (event) => {
-		event.preventDefault();
+	async function componentDidMount() {
+		// GET request using fetch with async/await
+		const response = await fetch("http://localhost:3001/register");
+		const data = await response.json();
+		console.log(response, data);
+		// this.setState({ totalReactPackages: data.total })
+	}
 
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		componentDidMount();
+		
 		console.log(inputs);
 
-		// TODO add correct validation
-
 		setIsShown(current => !current);
-
-		// TODO: Add AJAX Request here
-	  }
+	}
   	return (
 		  <div className='container'>
 			{!isShown && (
+				
 				<div className='register'>
+					<div className='d-flex justify-content-center'>
+						<Label text='Welcome to Secure Password! Please Register' ></Label>
+					</div>
 					<form onSubmit={handleSubmit}>
 						<div className='row mb-5'>
 							<div className='col-6'>
@@ -40,7 +51,6 @@ function UserRegisterPage() {
 										name="name"
 										placeholder='Enter your name'
 										onChange={handleChange}
-										required
 										/>
 								</label>
 							</div>
@@ -53,7 +63,6 @@ function UserRegisterPage() {
 										name="id"
 										placeholder='Enter your HCT ID'
 										onChange={handleChange}
-										required
 									/>
 								</label>
 							</div>
@@ -68,7 +77,6 @@ function UserRegisterPage() {
 										name="major"
 										placeholder='Enter your Major'
 										onChange={handleChange}
-										required
 									/>
 								</label>
 							</div>
@@ -81,7 +89,6 @@ function UserRegisterPage() {
 										name="year"
 										placeholder='Enter your Year'
 										onChange={handleChange}
-										required
 									/>
 								</label>
 							</div>
@@ -97,12 +104,15 @@ function UserRegisterPage() {
 
 			{isShown && (
 				<div className='registerConfirmed'>
+					<div className='d-flex justify-content-center'>
+						<Label text='Registration Confirmed'></Label>
+					</div>
 					<p className='text-center fs-4'>
 						Your registration process is completed. Now you can use the website to test the strength of your desired password.
 					</p>
 					<div className='row d-flex justify-content-center'>
 						<div className='col-6'>
-							<Button text="TEST THE PASSWORD NOW" submit="true" color="#2e5582" fontWeight="bold" className="w-25"></Button>
+							<Link to='/testPassword'><Button text="TEST THE PASSWORD NOW" submit="true" color="#2e5582" fontWeight="bold" className="w-25"></Button></Link>
 						</div>
 					</div>
 				</div>

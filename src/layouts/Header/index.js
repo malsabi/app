@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../../assets/images/logo_lowRes.PNG';
 import Button from '../../components/Button';
 import './style.css';
+import { Link } from 'react-router-dom';
 
 
 function Header(){
@@ -12,14 +13,14 @@ function Header(){
 			</div>
 			<div className='col-9'>
 			<div className='topNav'>
-				<Button text="User Register" textTransform="uppercase"></Button>
-				<Button text="Administrator Log In" textTransform="uppercase" borderBottom="none"></Button>
+				<Link to="/userRegister"><Button text="User Register" textTransform="uppercase"></Button></Link>
+				<Link to="/adminLogin"><Button text="Administrator Log In" textTransform="uppercase" borderBottom="none"></Button></Link>
 			</div>
 			<div className='Pages'>
-				<Button text="Home" textTransform="uppercase" borderBottom="none"></Button>
-				<Button text="Test the Password" textTransform="uppercase" borderBottom="none"></Button>
-				<Button text="Password Suggestions" textTransform="uppercase" borderBottom="none"></Button>
-				<Button text="Contact Us" textTransform="uppercase" borderBottom="none"></Button>
+				<Link to="/"><Button text="Home" textTransform="uppercase" borderBottom="none"></Button></Link>
+				<Link to="/testPassword"><Button text="Test the Password" textTransform="uppercase" borderBottom="none"></Button></Link>
+				<Link to="/passwordSuggestions"><Button text="Password Suggestions" textTransform="uppercase" borderBottom="none"></Button></Link>
+				<Link to="/contactUs"><Button text="Contact Us" textTransform="uppercase" borderBottom="none"></Button></Link>
 			</div>
 			</div>
 		</div>

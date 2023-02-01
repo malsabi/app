@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './style.css';
 import StrengthMeter from '../../components/StrengthMeter';
+import Label from '../../components/Label';
 
 function TestPasswordPage() {
 	const [password, setPassword] = useState(null);
@@ -12,6 +13,9 @@ function TestPasswordPage() {
 	};
   	return (
 		<div className='w-100 d-flex flex-column justify-content-center '>
+			<div className='d-flex justify-content-center'>
+				<Label text='Check Your Password Strength'></Label>
+			</div>
 			<div className='row'>
 				<form>
 					<div className='row mb-5'>
