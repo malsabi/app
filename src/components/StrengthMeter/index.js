@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import zxcvbnAsync from "zxcvbn-async";
+// import Button from "../Button";
+import { Button } from "react-bootstrap";
 import "./style.css";
 const StrengthMeter = () => {
   	const [password, setPassword] = useState('');
@@ -7,6 +9,12 @@ const StrengthMeter = () => {
 	const [passwordStrength, setPasswordStrength] = useState([]);
 
 	const handleChange = (event) => {
+		if(!event.target.value){
+			setPassword('');
+			setCrackDuration(null);
+			setPasswordStrength([]);
+			return
+		}
 		setPassword(event.target.value);
 		zxcvbnAsync.load()
 		.then((zxcvbn) => {
@@ -53,10 +61,41 @@ const StrengthMeter = () => {
         }
 	}
 
+	async function handleResponse() {
+		console.log(passwordStrength.val)
+		const response = await fetch("http://localhost:3001/insertPassword", {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				password: password,
+				strength: passwordStrength.strength,
+				creator: 2
+			})
+		});
+
+		console.log(response)
+
+		// if(response.ok) return setIsShown(current => !current)
+
+		const data = await response.json();
+
+		console.log(data)
+
+	}
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		handleResponse();
+	}
+
   	return (
 		<div className='w-100 d-flex flex-column justify-content-center'>
 			<div className='row'>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div className='row mb-5 d-flex flex-column justify-content-center'>
 						<div className='col-12 d-flex justify-content-center align-items-center'>
 							<input
@@ -67,7 +106,7 @@ const StrengthMeter = () => {
 									backgroundColor: `${passwordStrength.backgroundColor ? passwordStrength.backgroundColor: ''}`
 								}}
 								value={password}
-								type="text"
+								type="password"
 								name="passwordChecker"
 								placeholder='Enter Your Password'
 								onChange={handleChange}
@@ -92,10 +131,17 @@ const StrengthMeter = () => {
 						</div>
 						<div className='col-12 d-flex text-center justify-content-center align-items-center mt-3'>
 							{crackDuration &&
-								`It would take a computer about ${crackDuration} to crack your password`
+								`It would take a computer roughly ${crackDuration} to crack your password`
 							}
 						</div>
+						<div className='col-12 d-flex text-center justify-content-center align-items-center mt-3'>
+							{password &&
+								<Button type="submit" className="btn btn-danger btn-lg text-dark" >NEXT</Button>
+							}
+						</div>
+
 					</div>
+
 				</form>
 			</div>
 		</div>

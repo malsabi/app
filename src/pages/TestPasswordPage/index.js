@@ -12,7 +12,9 @@ function TestPasswordPage() {
 			<div className='row'>
 				<div className='col-12 d-flex justify-content-center align-items-center'>
 					<StrengthMeter></StrengthMeter>
+
 				</div>
+					<div style={{fontSize: '12px'}} className='w-100 alert alert-light text-center text-uppercase fs-6'>Entries are 100% secure and not stored in any way or shared with anyone</div>
 			</div>
 		</div>
   	)
